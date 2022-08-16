@@ -3,18 +3,17 @@
     <div v-for="item in this.getNewsList" :key="item.id">
       <NewsCard :title=item.title :img=item.img :text=item.text :tag=item.tag />
     </div>
+    <div class="warn" v-if="!this.getNewsList.length">
+      <p>Нет данных</p>
+    </div>
   </div>
-    <div class="err" v-if="!this.getNewsRequestStatus && this.getNewsError" :errorMessage="this.getNewsError">
+  <div class="err" v-if="!this.getNewsRequestStatus && this.getNewsError" :errorMessage="this.getNewsError">
     <p class="err-mess">
-      {{errorMessage}}
+      {{ errorMessage }}
     </p>
-    </div>
-    <div class="loader" v-if="this.getNewsRequestStatus">
-    </div>
-  <div class="warn" v-if="!this.getNewsRequestStatus && !this.getNewsList.length">
-    <p>Нет данных</p>
   </div>
-
+  <div class="loader" v-if="this.getNewsRequestStatus">
+  </div>
 </template>
 
 <script>
@@ -44,6 +43,7 @@ export default {
   }
 }
 </script>
+
 <style>
 .company-bar {
   display: flex;
@@ -53,11 +53,9 @@ export default {
 
 .loader {
   margin-top: 250px;
-  margin-left:  50%;
+  margin-left: 50%;
   border: 16px solid #f3f3f3;
-  /* Light grey */
   border-top: 16px solid #3498db;
-  /* Blue */
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -75,9 +73,8 @@ export default {
 }
 
 .err-mess {
-color: black;
-border: 3px red;
-background-color: red;
+  color: black;
+  border: 3px red;
+  background-color: red;
 }
-
 </style>

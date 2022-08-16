@@ -69,8 +69,7 @@ h2 {
 }
 
 .tag {
-font-style: italic;
-display: flex;
+    font-style: italic;
+    display: flex;
 }
-
 </style>
