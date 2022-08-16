@@ -4,6 +4,11 @@
       <NewsCard :title=item.title :img=item.img :text=item.text :tag=item.tag />
     </div>
   </div>
+    <div class="err" v-if="!this.getNewsRequestStatus && this.getNewsError" :errorMessage="this.getNewsError">
+    <p class="err-mess">
+      {{errorMessage}}
+    </p>
+    </div>
     <div class="loader" v-if="this.getNewsRequestStatus">
     </div>
   <div class="warn" v-if="!this.getNewsRequestStatus && !this.getNewsList.length">
@@ -68,4 +73,11 @@ export default {
     transform: rotate(360deg);
   }
 }
+
+.err-mess {
+color: black;
+border: 3px red;
+background-color: red;
+}
+
 </style>
