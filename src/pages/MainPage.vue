@@ -1,6 +1,5 @@
 <template>
   <div class="company-bar" v-if="!this.getNewsRequestStatus && !this.getNewsError">
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <div v-for="item in this.getNewsList" :key="item.id">
       <NewsCard :title=item.title :img=item.img :text=item.text :tag=item.tag />
     </div>

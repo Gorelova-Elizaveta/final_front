@@ -4,7 +4,6 @@ const COMPANIES_PATH = '/posts'
 
 export const actions = {
   async requestListOfNews ({ commit }) {
-    console.log('yes')
     try {
       commit('getNewsRequest')
       const { data } = await api.get(COMPANIES_PATH)

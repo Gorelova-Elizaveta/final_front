@@ -47,7 +47,6 @@ export default {
 .content-block {
     margin-top: 50px;
     display: flex;
-    /* flex-direction: column; */
     align-items: center;
 }
 
@@ -63,18 +62,13 @@ h2 {
 }
 
 .description {
-    /* width: 320px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden; */
     width: 350px;
     display: flex;
     overflow-wrap: anywhere;
     height: 100px;
 }
 
-.tag{
+.tag {
 font-style: italic;
 display: flex;
 }
