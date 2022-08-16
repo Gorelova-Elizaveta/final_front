@@ -17,7 +17,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .header {
   background-color: #3ee53344;
@@ -25,14 +24,8 @@ export default {
   justify-content: space-around;
 }
 
-.title-news {
-  display: inline;
-  font-size: 44px;
-}
-
 .link-to-main {
   padding-right: 145px;
-
 }
 
 .entry {

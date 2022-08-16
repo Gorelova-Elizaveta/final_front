@@ -5,11 +5,8 @@
       <NewsCard :title=item.title :img=item.img :text=item.text :tag=item.tag />
     </div>
   </div>
-  <!-- <div class="a"> -->
     <div class="loader" v-if="this.getNewsRequestStatus">
-      <!-- <p>Загрузка</p> -->
     </div>
-  <!-- </div>s -->
   <div class="warn" v-if="!this.getNewsRequestStatus && !this.getNewsList.length">
     <p>Нет данных</p>
   </div>
