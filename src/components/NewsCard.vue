@@ -2,12 +2,10 @@
     <div class="content-block">
         <div class="info-block">
             <div class="picture">
-                <img class="cat-img" src="../assets/cat.jpg">
-
-            </div>
-            <div class="text-info">
-                <h2>Title</h2>
-                <span></span>
+                <img class="cat-img" src="{{ img }}">
+                <h2>{{ title }}</h2>
+                <div class="description">{{ text }}</div>
+                <div class="tag">#: {{ tag }}</div>
             </div>
         </div>
     </div>
@@ -15,17 +13,27 @@
 
 <script>
 export default {
-  name: 'NewsCard'
+  name: 'NewsCard',
+  props: {
+    title: String,
+    img: String || null,
+    text: String,
+    tag: String
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
+.picture {
+    margin-top: 30px;
+}
+
 .info-block {
     display: flex;
     justify-content: space-around;
-    width: 600px;
-    height: 200px;
+    width: 458px;
+    height: 257px;
     border: solid 1px;
     border-radius: 52px;
 }
@@ -40,12 +48,36 @@ export default {
 .content-block {
     margin-top: 50px;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
 }
-.text-info{
+
+.text-info {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 370px;
 }
+
+h2 {
+    font-size: 16px;
+}
+
+.description {
+    /* width: 320px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden; */
+    width: 350px;
+    display: flex;
+    overflow-wrap: anywhere;
+    height: 100px;
+}
+
+.tag{
+font-style: italic;
+display: flex;
+}
+
 </style>

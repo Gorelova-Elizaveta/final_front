@@ -1,18 +1,75 @@
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-  <AppBar />
-  <NewsCard/>
+  <div class="company-bar" v-if="!this.getNewsRequestStatus && !this.getNewsError">
+    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+    <div v-for="item in this.getNewsList" :key="item.id">
+      <NewsCard :title=item.title :img=item.img :text=item.text :tag=item.tag />
+    </div>
+  </div>
+  <!-- <div class="a"> -->
+    <div class="loader" v-if="this.getNewsRequestStatus">
+      <!-- <p>Загрузка</p> -->
+    </div>
+  <!-- </div>s -->
+  <div class="warn" v-if="!this.getNewsRequestStatus && !this.getNewsList.length">
+    <p>Нет данных</p>
+  </div>
+
 </template>
 
 <script>
-import AppBar from '../components/AppBar.vue'
 import NewsCard from '../components/NewsCard.vue'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'MainPage',
   components: {
-    AppBar,
     NewsCard
+  },
+
+  computed: {
+    ...mapGetters([
+      'getNewsList',
+      'getNewsRequestStatus',
+      'getNewsError'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'requestListOfNews'
+    ])
+  },
+  mounted () {
+    this.requestListOfNews()
   }
 }
 </script>
+<style>
+.company-bar {
+  display: flex;
+  gap: 20px;
+  padding: 40px;
+}
+
+.loader {
+  margin-top: 250px;
+  margin-left:  50%;
+  border: 16px solid #f3f3f3;
+  /* Light grey */
+  border-top: 16px solid #3498db;
+  /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>

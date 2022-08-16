@@ -1,14 +1,17 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+    <AppBar />
   <MainPage />
 </template>
 
 <script>
+import AppBar from './components/AppBar.vue'
 import MainPage from './pages/MainPage.vue'
 
 export default {
   name: 'App',
   components: {
+    AppBar,
     MainPage
   }
 }
