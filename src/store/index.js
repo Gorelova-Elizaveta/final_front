@@ -1,14 +1,9 @@
 import { createStore } from 'vuex'
 
-export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
+import news from './modules/news'
+
+export const store = createStore({
   modules: {
+    news
   }
 })
