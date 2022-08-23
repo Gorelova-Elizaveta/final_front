@@ -36,16 +36,16 @@
         </div>
         <footer class="modal-footer">
           <slot name="footer">
-            I'm the default footer!
+            <!-- I'm the default footer! -->
 
-            <!-- <button
+            <button
               type="button"
               class="btn-green"
               @click="close"
-              aria-label="Close modal"
+              aria-label="ok"
             >
               Close me!
-            </button> -->
+            </button>
           </slot>
         </footer>
       </div>
@@ -55,6 +55,8 @@
 
 
 <script>
+import { mapGetters, mapMutations, mapActions } from 'vuex' 
+
   export default {
    name: 'AuthModule',
     methods: {
@@ -64,6 +66,20 @@
     },
    props: {
     type: String,
+  },
+   computed: {
+    ...mapGetters([
+      'setNewUser',
+      'setUsersErrorRequest',
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'userAuth'
+    ])
+  },
+  mounted () {
+    this.userAuth()
   }
   }
 </script>
@@ -72,7 +88,7 @@
   .modal-backdrop {
     margin-top: 10px;
     position: fixed;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(2, 0, 0, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,10 +127,10 @@
     color: #4AAE9B;
     background: transparent;
   }
-  /* .btn-green {
+  .btn-green {
     color: white;
     background: #4AAE9B;
     border: 1px solid #4AAE9B;
     border-radius: 2px;
-  } */
+  }
 </style> 
