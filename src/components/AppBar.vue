@@ -5,11 +5,12 @@
       <h1 class="title-news">Lenta</h1>
     </div>
     <div>
-      <button class="entry">Вход</button>
-      <button @click="showModal">Регистрация</button>
+      <button @click="showModal('login')" class="entry">Вход</button>
+      <button @click="showModal('signup')">Регистрация</button>
         <AuthModule
-      v-show="isModalVisible"
-      @close="closeModal"
+          v-show="isModalVisible"
+          @close="closeModal"
+          :type="modalType"
     />
     </div>
   </div>
@@ -26,11 +27,14 @@
         data () {
       return {
         isModalVisible: false,
+        modalType: '',
       };
     },
     methods: {
-      showModal() {
+      showModal(type) {
+        console.log(type);
         this.isModalVisible = true;
+        this.modalType = type;
       },
       closeModal() {
         this.isModalVisible = false;

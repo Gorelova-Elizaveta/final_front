@@ -11,7 +11,7 @@
           id="modalTitle"
         >
           <slot name="header">
-             registration!
+             {{ type }}!
 
             <button
               type="button"
@@ -23,26 +23,29 @@
             </button>
           </slot>
         </header>
-        <section
-          class="modal-body"
+        <div v-if="type === 'signup'"         class="modal-body"
           id="modalDescription"
         >
-          <slot name="body">
-            I'm the default body!
-          </slot>
-        </section>
+          <input  placeholder="email" name="body">
+            <!-- I'm the default body!
+          </input> -->
+        </div>
+        <div>
+          <input  placeholder="username">
+          <input placeholder="password" type="password">
+        </div>
         <footer class="modal-footer">
           <slot name="footer">
             I'm the default footer!
 
-            <button
+            <!-- <button
               type="button"
               class="btn-green"
               @click="close"
               aria-label="Close modal"
             >
               Close me!
-            </button>
+            </button> -->
           </slot>
         </footer>
       </div>
@@ -53,13 +56,16 @@
 
 <script>
   export default {
-    name: 'AuthModule',
+   name: 'AuthModule',
     methods: {
       close() {
         this.$emit('close');
       },
     },
-  };
+   props: {
+    type: String,
+  }
+  }
 </script>
 
 <style>
@@ -71,7 +77,6 @@
     justify-content: center;
     align-items: center;
   }
-
   .modal {
     background: #FFFFFF;
     box-shadow: 2px 2px 20px 1px;
@@ -79,29 +84,24 @@
     display: flex;
     flex-direction: column;
   }
-
   .modal-header,
   .modal-footer {
     padding: 15px;
     display: flex;
   }
-
   .modal-header {
     border-bottom: 1px solid #eeeeee;
     color: #4AAE9B;
     justify-content: space-between;
   }
-
   .modal-footer {
     border-top: 1px solid #eeeeee;
     justify-content: flex-end;
   }
-
   .modal-body {
     position: relative;
-    padding: 20px 10px;
+    /* padding: 20px 10px; */
   }
-
   .btn-close {
     border: none;
     font-size: 20px;
@@ -111,11 +111,10 @@
     color: #4AAE9B;
     background: transparent;
   }
-
-  .btn-green {
+  /* .btn-green {
     color: white;
     background: #4AAE9B;
     border: 1px solid #4AAE9B;
     border-radius: 2px;
-  }
-</style>
+  } */
+</style> 
