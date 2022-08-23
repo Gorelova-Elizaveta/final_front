@@ -6,15 +6,38 @@
     </div>
     <div>
       <button class="entry">Вход</button>
-      <button>Регистрация</button>
+      <button @click="showModal">Регистрация</button>
+        <AuthModule
+      v-show="isModalVisible"
+      @close="closeModal"
+    />
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'AppBar'
-}
+    import AuthModule from './AuthModule.vue'
+ 
+    export default {
+        name: 'AppBar',
+        components: {
+            AuthModule
+        },
+        data () {
+      return {
+        isModalVisible: false,
+      };
+    },
+    methods: {
+      showModal() {
+        this.isModalVisible = true;
+      },
+      closeModal() {
+        this.isModalVisible = false;
+      }
+    },
+  };
+  
 </script>
 
 <style scoped>
@@ -31,4 +54,17 @@ export default {
 .entry {
   padding-right: 45px;
 }
+
+   body {
+        font-family: 'Source Sans Pro', sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+    }
+ 
+    .page {
+        position: relative;
+        width: 100%;
+        min-height: 100%;
+    }
 </style>
