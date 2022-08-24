@@ -7,7 +7,6 @@ export const actions = {
     try {
       commit('getNewsRequest')
       const { data } = await api.get(COMPANIES_PATH)
-      console.log('setNewsResponse')
       commit('setNewsResponse', data)
     } catch ({ response }) {
       const currentError = response.data.message

@@ -2,7 +2,7 @@
     <div class="content-block">
         <div class="info-block">
             <div class="picture">
-                <img class="cat-img" src={{ img }}>
+                <img class="cat-img" :src="img">
                 <h2>{{ title }}</h2>
                 <div class="description">{{ text }}</div>
                 <div class="tag">#: {{ tag }}</div>

@@ -1,8 +1,9 @@
 export const state = () => ({
-  // toggleModal: false,
+  toggleModal: false,
   // typeModal: '',
   isFetching: false,
-  // userAuth: {},
+  userAuth: {},
   error: null,
+
   // isLoggedIn: Boolean(localStorage.getItem('token'))
 })

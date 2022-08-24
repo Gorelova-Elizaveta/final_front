@@ -8,8 +8,7 @@
       <button @click="showModal('login')" class="entry">Вход</button>
       <button @click="showModal('signup')">Регистрация</button>
         <AuthModule
-          v-show="isModalVisible"
-          @close="closeModal"
+          v-show="getToggleModal"
           :type="modalType"
     />
     </div>
@@ -18,6 +17,7 @@
 
 <script>
     import AuthModule from './AuthModule.vue'
+    import { mapActions, mapGetters } from 'vuex';
  
     export default {
         name: 'AppBar',
@@ -26,18 +26,26 @@
         },
         data () {
       return {
-        isModalVisible: false,
+        // isModalVisible:{ 
+        //   type: Boolean,
+        //   default: false
+        // },
         modalType: '',
       };
     },
+    computed:{
+      ...mapGetters([
+        'getToggleModal'
+      ])
+      },
     methods: {
+    ...mapActions([
+      'toggleModal'
+    ]),
       showModal(type) {
         console.log(type);
-        this.isModalVisible = true;
+        this.toggleModal(true);
         this.modalType = type;
-      },
-      closeModal() {
-        this.isModalVisible = false;
       }
     },
   };

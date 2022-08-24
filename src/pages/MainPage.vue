@@ -1,7 +1,6 @@
 <template>
   <div class="company-bar" v-if="!this.getNewsRequestStatus && !this.getNewsError">
     <div v-for="item in this.getNewsList" :key="item.id">
-    console.log('item', item.title)
       <NewsCard :title=item.title :text=item.text :tag=item.tag />
     </div>
     <div class="warn" v-if="!this.getNewsList.length">
@@ -21,7 +20,7 @@
 <script>
 import NewsCard from '../components/NewsCard.vue'
 import { mapActions, mapGetters } from 'vuex'
-console.log('Mp')
+
 
 export default {
   name: 'MainPage',
