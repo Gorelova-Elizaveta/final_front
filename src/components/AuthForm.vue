@@ -1,7 +1,7 @@
 <template>
   <v-form
   id="app"
-  
+  @submit="submitHandler"
 >
 
   <p>
@@ -29,7 +29,7 @@
     <input
       type="submit"
       value="Отправить"
-      @click="handleSubmit"
+      @click="submitHandler"
     >
   </p>
 
@@ -54,11 +54,16 @@ export default {
       'getUserAuth',
     
     ]),
-    handleSubmit: function (e) {
-      e.preventDefault();
-      this.getUserAuth()
-    },  },
+    // handleSubmit: function (e) {
+    //   e.preventDefault();
+    //   this.getUserAuth()
+    // },  },
+    submitHandler() {
+      console.log('yes')
+      // this.$router.push('/')
+    }
   
+}
 }
 </script>
 
