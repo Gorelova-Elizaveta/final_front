@@ -1,7 +1,7 @@
 <template>
   <div class="company-bar" v-if="!this.getNewsRequestStatus && !this.getNewsError">
     <div v-for="item in this.getNewsList" :key="item.id">
-      <NewsCard :title=item.title :text=item.text :tag=item.tag />
+      <NewsCard :title=item.title :text=item.text :tag=item.tag  :src="item.img"/>
     </div>
     <div class="warn" v-if="!this.getNewsList.length">
       <p>Нет данных</p>

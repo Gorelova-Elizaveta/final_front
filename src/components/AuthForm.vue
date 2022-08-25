@@ -9,12 +9,12 @@
     <input
       placeholder="email"
       id="email"
-      v-model="email"
+      v-model.trim="email"
       type="email"
       name="email"
     >
   </p>
-
+      <!-- :class="{invalid: ($v.email.$dirty && !$v.email.required) || ($v.email.$dirty && !$v.email.email)}" -->
   <p>
     <label for="password"></label>
     <input
@@ -29,7 +29,7 @@
     <input
       type="submit"
       value="Отправить"
-      @click="submitHandler"
+      @click="submitHandler(type)"
     >
   </p>
 
@@ -39,9 +39,21 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
+import {email, required, minLength} from 'vuelidate/lib/validators';
 
 export default {
   name: 'AuthForm',
+      data: () => ({
+      email: '',
+      password:''
+  }),
+  props: {
+    type: String,
+  },
+  // validations:{
+  //   email: {email, required},
+  //   password:{required, minLength: minLength(6)}
+  // },
   computed: {
     ...mapGetters([
       'getNewUser',
@@ -52,19 +64,24 @@ export default {
   methods: {
     ...mapActions([
       'getUserAuth',
+      'toggleModal'
     
     ]),
-    // handleSubmit: function (e) {
-    //   e.preventDefault();
-    //   this.getUserAuth()
-    // },  },
-    submitHandler() {
-      console.log('yes')
-      // this.$router.push('/')
-    }
+ 
+    submitHandler: function (type) {
+       console.log('yes', type)
+        const user = {
+          email: this.email,
+          password: this.password
+      }
+      // e.preventDefault();
+      this.toggleModal(false);
+      this.getUserAuth({ user, type})
+    },  },
+  
   
 }
-}
+
 </script>
 
 <style>

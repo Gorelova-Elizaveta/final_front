@@ -4,6 +4,5 @@ export const state = () => ({
   isFetching: false,
   userAuth: {},
   error: null,
-
-  // isLoggedIn: Boolean(localStorage.getItem('token'))
+  isLoggedIn: Boolean(localStorage.getItem('token'))
 })

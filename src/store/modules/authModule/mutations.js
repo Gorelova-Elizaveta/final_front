@@ -14,6 +14,6 @@ export const mutations = {
   },
   setToggleModal(state, payload) {
     state.toggleModal = payload;
-  },
+  }
   
 }

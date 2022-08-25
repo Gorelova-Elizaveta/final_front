@@ -11,29 +11,10 @@
             </div>
           </slot>
         </header>
-        <!-- <div v-if="type === 'signup'"         class="modal-body"
-          id="modalDescription"
-        >
-          <input  placeholder="email" name="body">
-            I'm the default body!
-        </div>
-        <div>
-          <input  placeholder="username">
-          <input placeholder="password" type="password">
-        </div> -->
-        <AuthForm />
+        <AuthForm :type="type" />
         <footer class="modal-footer">
           <slot name="footer">
-            <!-- I'm the default footer! -->
 
-            <!-- <button
-              type="button"
-              class="btn-green"
-              @click="close"
-              aria-label="ok"
-            >
-              Close me!
-            </button> -->
           </slot>
         </footer>
       </div>
@@ -48,9 +29,6 @@ import AuthForm from './AuthForm.vue'
 
 export default {
   name: 'AuthModule',
-  // props:{
-  // isModalVisible: Boolean
-  // },
   
   props: {
     type: String,
@@ -77,10 +55,7 @@ export default {
     }
     
   },
-  
-  // mounted() {
-  //   this.userAuth()
-  // }
+
 }
 </script>
 
@@ -121,7 +96,6 @@ export default {
 
 .modal-body {
   position: relative;
-  /* padding: 20px 10px; */
 }
 
 .btn-close {
@@ -134,10 +108,5 @@ export default {
   background: transparent;
 }
 
-/* .btn-green {
-    color: white;
-    background: #4AAE9B;
-    border: 1px solid #4AAE9B;
-    border-radius: 2px;
-  } */
+
 </style> 
