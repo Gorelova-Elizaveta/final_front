@@ -9,19 +9,18 @@ export const actions = {
     const currentPath = type === 'login'
     ? USER_SESSION_PATH
     : USER_REGISTRATION_PATH;
-    console.log('userAuth',  )
-    const { data, headers } = await api.post(`${currentPath}`, { user })
+    
+    try {
+      commit('getNewUser')
+      const { data, headers } = await api.post(`${currentPath}`, { user });
     if (headers.authorization){
     localStorage.setItem('token', headers.authorization)
     }
-    try {
-      commit('getNewUser')
-      const data = await api.post(currentPath, { user })
-      console.log(data)
       // commit('setNewUserRequest', data)
     } catch ({ response }) {
-      const currentError = response.data.message ? response.data.message : response.statusText
-      commit('setRequestError', currentError)
+      // const currentError = response.data.message ? response.data.message : response.statusText
+      const currentError = currentPath  === 'users/sign_in' ? "ошибка при входе" : "ошибка регистрации"
+      commit('setUsersErrorRequest', currentError)
     }
   },
   toggleModal({ commit }, payload) {

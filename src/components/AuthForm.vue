@@ -2,7 +2,7 @@
   <v-form
   id="app"
   @submit="submitHandler"
->
+  >
 
   <p>
     <label  for="email"></label>
@@ -32,9 +32,14 @@
       @click="submitHandler(type)"
     >
   </p>
-
+  
 </v-form>
 
+<!-- <div class="err" v-if="!this.setNewUserRequest || !this.getNewUser && this.setUsersErrorRequest" :errorMessage="this.setUsersErrorRequest">
+  <p class="err-mess">
+   {{ errorMessage }}
+  </p>
+</div> -->
 </template>
 
 <script>
@@ -77,6 +82,8 @@ export default {
       // e.preventDefault();
       this.toggleModal(false);
       this.getUserAuth({ user, type})
+      this.email = [];
+      this.password = [];
     },  },
   
   
@@ -85,5 +92,10 @@ export default {
 </script>
 
 <style>
+  .err-mess{
+    width: 100px;
+    height: 100px;
+    background-color:saddlebrown;
+  }
 
   </style>
