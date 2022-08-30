@@ -14,7 +14,6 @@
       name="email"
     >
   </p>
-      <!-- :class="{invalid: ($v.email.$dirty && !$v.email.required) || ($v.email.$dirty && !$v.email.email)}" -->
   <p>
     <label for="password"></label>
     <input
@@ -34,12 +33,14 @@
   </p>
   
 </v-form>
-
-<!-- <div class="err" v-if="!this.setNewUserRequest || !this.getNewUser && this.setUsersErrorRequest" :errorMessage="this.setUsersErrorRequest">
-  <p class="err-mess">
-   {{ errorMessage }}
+<div class="err" v-if="!this.setNewUserRequest || !this.getNewUser && this.setUsersErrorRequest" :errorMessage="this.setUsersErrorRequest">
+  <p  v-if="type === 'login'" class="err-mess">
+ Неправильный логин или пароль...
   </p>
-</div> -->
+  <p  v-if="type === 'signup'" class="err-mess">
+ Что-то пошло не так...
+  </p>
+</div>
 </template>
 
 <script>
@@ -50,15 +51,11 @@ export default {
   name: 'AuthForm',
       data: () => ({
       email: '',
-      password:''
+      password:'',
   }),
   props: {
     type: String,
   },
-  // validations:{
-  //   email: {email, required},
-  //   password:{required, minLength: minLength(6)}
-  // },
   computed: {
     ...mapGetters([
       'getNewUser',
@@ -74,13 +71,10 @@ export default {
     ]),
  
     submitHandler: function (type) {
-       console.log('yes', type)
         const user = {
           email: this.email,
           password: this.password
       }
-      // e.preventDefault();
-      this.toggleModal(false);
       this.getUserAuth({ user, type})
       this.email = [];
       this.password = [];
@@ -92,10 +86,13 @@ export default {
 </script>
 
 <style>
-  .err-mess{
-    width: 100px;
-    height: 100px;
-    background-color:saddlebrown;
+    .err-mess {
+      background-color: white;
+  border: solid 2px red;
+    width: 150px;
+    height: 35px;
+    text-align: center;
+    margin-left: 17px;
   }
 
   </style>

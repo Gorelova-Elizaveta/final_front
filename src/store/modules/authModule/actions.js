@@ -16,10 +16,8 @@ export const actions = {
     if (headers.authorization){
     localStorage.setItem('token', headers.authorization)
     }
-      // commit('setNewUserRequest', data)
     } catch ({ response }) {
-      // const currentError = response.data.message ? response.data.message : response.statusText
-      const currentError = currentPath  === 'users/sign_in' ? "ошибка при входе" : "ошибка регистрации"
+      const currentError = response.data.message ? response.data.message : response.statusText
       commit('setUsersErrorRequest', currentError)
     }
   },

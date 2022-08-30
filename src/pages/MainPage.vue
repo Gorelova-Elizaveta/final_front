@@ -73,10 +73,4 @@ export default {
     transform: rotate(360deg);
   }
 }
-
-.err-mess {
-  color: black;
-  border: 3px red;
-  background-color: red;
-}
 </style>

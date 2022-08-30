@@ -12,6 +12,8 @@
           :type="modalType"
     />
     </div>
+  
+
   </div>
 </template>
 
@@ -26,16 +28,14 @@
         },
         data () {
       return {
-        // isModalVisible:{ 
-        //   type: Boolean,
-        //   default: false
-        // },
+  
         modalType: '',
       };
     },
     computed:{
       ...mapGetters([
-        'getToggleModal'
+        'getToggleModal',
+        'setUsersErrorRequest'
       ])
       },
     methods: {
@@ -79,4 +79,5 @@
         width: 100%;
         min-height: 100%;
     }
+    
 </style>
