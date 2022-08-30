@@ -1,7 +1,7 @@
 <template>
   <div class="company-bar" v-if="!this.getNewsRequestStatus && !this.getNewsError">
     <div v-for="item in this.getNewsList" :key="item.id">
-      <NewsCard :title=item.title :img=item.img :text=item.text :tag=item.tag />
+      <NewsCard :title=item.title :text=item.text :tag=item.tag  :img="item.image"/>
     </div>
     <div class="warn" v-if="!this.getNewsList.length">
       <p>Нет данных</p>
@@ -12,13 +12,15 @@
       {{ errorMessage }}
     </p>
   </div>
-  <div class="loader" v-if="this.getNewsRequestStatus">
+  <div class="loader" v-if="this.getNewsRequestStatus" :status="this.getNewsRequestStatus">
+  {{ status }}
   </div>
 </template>
 
 <script>
 import NewsCard from '../components/NewsCard.vue'
 import { mapActions, mapGetters } from 'vuex'
+
 
 export default {
   name: 'MainPage',
@@ -70,11 +72,5 @@ export default {
   100% {
     transform: rotate(360deg);
   }
-}
-
-.err-mess {
-  color: black;
-  border: 3px red;
-  background-color: red;
 }
 </style>
