@@ -2,7 +2,7 @@
     <div class="content-block">
         <div class="info-block">
             <div class="picture">
-                <img class="cat-img" src={{ img }}>
+                <img class="cat-img" :src="img">
                 <h2>{{ title }}</h2>
                 <div class="description">{{ text }}</div>
                 <div class="tag">#: {{ tag }}</div>
@@ -31,15 +31,15 @@ export default {
 .info-block {
     display: flex;
     justify-content: space-around;
-    width: 458px;
-    height: 257px;
+    width: 466px;
+    height: 415px;
     border: solid 1px;
     border-radius: 52px;
 }
 
 .cat-img {
     width: 120px;
-
+    height: 140px;
     margin-left: -60px;
     margin-top: 32px;
 }
